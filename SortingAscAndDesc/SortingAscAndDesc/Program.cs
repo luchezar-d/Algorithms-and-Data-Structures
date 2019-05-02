@@ -47,10 +47,7 @@ namespace SortingAscAndDesc
             int[] arr = new int[] { 2, 3, 1, 6, 5, 4 };
             int[] arr2 = new int[arr.Length];
             int[] arr3 = new int[arr.Length];
-
-            int[] newArrEven = new int[arr.Length];
-            int[] newArrOdd = new int[arr.Length];
-
+            
             for (int i = 0; i < arr.Length; i++)
             {
                 if ((arr[i] % 2) == 0)
@@ -63,10 +60,25 @@ namespace SortingAscAndDesc
                 }
                 
             }
-            BubbleSortAsc(arr2);
-            BubbleSortDesc(arr3);
-            Console.WriteLine(string.Join(" ", arr2));
-            Console.WriteLine(string.Join(" ", arr3));
+
+            var even = from x in arr2
+                       where x > 0
+                       orderby x ascending
+                       select x;
+            var odd = from y in arr3
+                       where y > 0
+                       orderby y descending
+                       select y;
+
+            foreach (var item in even)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("------------------------");
+            foreach (var item in odd)
+            {
+                Console.WriteLine(item);
+            }
 
 
 
